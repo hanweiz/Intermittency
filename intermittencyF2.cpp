@@ -81,11 +81,11 @@ void intermittencyF2()
 					Nf_NSum += multiplicity*frequency_N;								// correspond to summ_N*frequency_N
 					N_Nminus1_Sum += multiplicity*(multiplicity - 1)*frequency_N;		// correspond to summ_N*(N-1)*frequency_N
 					
-					for (int i = 0; i <= data_point; ++i){
+					/*for (int i = 0; i <= data_point; ++i){					//automate the calculation of <n(n-1)...(n-p+1)>
 
 						variable = (multiplicity - i)
 
-					}
+					}*/
 					
 					f_NSum += frequency_N;												// correspond to summ_f_N
 				}
@@ -101,17 +101,22 @@ void intermittencyF2()
 				N_Nminus1_ave_sum += N_Nminus1_ave;
 			}
 			
-			F_culmulant = (0.01*data_point/5.0)*(N_Nminus1_ave_sum) / (N_ave_sumsq);
+			F_culmulant = (0.01*(2^data_point)/4.8)*(N_Nminus1_ave_sum) / (N_ave_sumsq);
 
-			->SetBinContent((0.01*data_point),F_culmulant);
-
-		
-
-
+			F_2->SetBinContent((0.01*(2^data_point)),F_culmulant);
 		}
+	gPad->SetLogX();
+	
+	F_2->GetXaxis()->SetTitle("#delta#eta");
+	F_2->GetYaxis()->SetTitleOffset(1.3);
+	F_2->GetYaxis()->SetTitle("F_{2}");
+	F_2->Write();	
 	
     eta_canvas->Update();
     eta_canvas->Draw();
+	
+	data_plot.Write();
+	data_plot.Close();
 }
 
 /*data_eta_histo->GetXaxis()->SetRangeUser(-2.4, 2.4);
