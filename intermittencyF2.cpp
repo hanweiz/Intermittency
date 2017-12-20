@@ -36,7 +36,7 @@
 using namespace std;
 using namespace ROOT::Math;
 
-void histo_plotting()
+void intermittencyF2()
 {
     TFile *data_plot = TFile::Open("Plots/multiplicity_eta.root");
     gStyle->SetOptStat(0);
