@@ -1,0 +1,70 @@
+Installation of ROOT on Windows 10 Version 1709 (OS Build 16299.125) for some reasons the OS build seemed to be important.
+
+============================================
+Enabling Developer Mode & WSL on Windows 10
+============================================
+
+1. Go to Search for Settings
+2. Under Settings -> Update and Security -> For Developers -> Select "Developer Mode"
+3. Under Control Panel -> Programs -> Programs and Features -> Check "Windows Subsystem for Linux"
+
+============================================
+Downloading Ubuntu App from Microsoft Store
+============================================
+
+1. Go to Microsoft Store
+2. Search for the (free) Ubuntu app. Check the version of Ubuntu. It was v16.04 as of 21/12/17.
+3. Download it and install.
+
+========================================
+Downloading Prerequisites for CERN ROOT
+========================================
+
+1. Google "Prerequisites for ROOT CERN". You should be directed to https://root.cern.ch/build-prerequisites
+2. Search for the relevant version of Linux installed. Mine was Ubuntu 16.04.
+3. Copy and paste the command for Required Packages:   sudo apt-get install git dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
+                                                       libxft-dev libxext-dev
+4. For my installation, there was an error message and the terminal suggested the command: sudo apt-get update
+    This line gets the apt-get manager to get the required updates.
+    After the update, enter: sudo apt-get upgrade
+5. Once the relevant upgrades have been done, install them again using: sudo apt-get install git dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
+                                                                        libxft-dev libxext-dev
+6. Copy and paste the command for Optional Packages: sudo apt-get install gfortran libssl-dev libpcre3-dev \
+                                                     xlibmesa-glu-dev libglew1.5-dev libftgl-dev \
+                                                     libmysqlclient-dev libfftw3-dev libcfitsio-dev \
+                                                     graphviz-dev libavahi-compat-libdnssd-dev \
+                                                     libldap2-dev python-dev libxml2-dev libkrb5-dev \
+                                                     libgsl0-dev libqt4-dev
+7. Repeat steps 4 and 5 for the optional packages if required.
+
+==================
+Download CERN ROOT
+==================
+
+1. Go to https://root.cern.ch/downloading-root
+2. Check out the latest Pro(duction) version of ROOT since it should be the most stable.
+3. Download the .tar file into local terminal (remember where you downloaded it)
+4. Untar the file from the Ubuntu terminal installed above.
+    a. Start the Ubuntu terminal
+    b. cd to the folder where the .tar file was downloaded. For me, it was cd /mnt/c/.../hanweiz/
+    c. Untar the file with: tar -xvf root6.(blah blah).tar
+    d. If the above is done successfully, there should be a "root" directory created.
+5. cd to /hanweiz/root/bin
+6. enter command: ./thisroot.sh
+
+===============
+Xserver for GUI
+===============
+
+1. This step is optional and is required only if graphics is to be desired while using ROOT.
+2. Search for an xserver for Windows. Xming and VcXsrv are ok, but VcXsrv was known to clash when multiple windows are opened from Ubuntu.
+3. Download Xming instead.
+4. If TBrowser function is required, remember to start XLaunch first.
+
+==============================================
+To change the default startup setting for bash
+==============================================
+
+1. cd ~ (this will bring us back to the home directory)
+2. vim ~/.bashrc (this starts up vim. We scroll to the very bottom to type in the command we want to run upon startup.)
+3. After every change, remmeber to do a: source ~/.bashrc to 'install' the new bashrc file.
